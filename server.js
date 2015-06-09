@@ -14,11 +14,11 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.get('/wines', item.findAll);
-app.get('/wines/:id', item.findById);
-app.post('/wines', item.addItem);
-app.put('/wines/:id', item.updateItem);
-app.delete('/wines/:id', item.deleteItem);
+app.get('/items', item.findAll);
+app.get('/items/:id', item.findById);
+app.post('/items', item.addItem);
+app.put('/items/:id', item.updateItem);
+app.delete('/items/:id', item.deleteItem);
 
 server.listen(app.get('port'), function () {
     console.log("Express server listening on port " + app.get('port'));
