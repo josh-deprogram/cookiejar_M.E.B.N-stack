@@ -1,6 +1,6 @@
 {
-  "name": "wine-cellar",
-  "description": "Wine Cellar Application",
+  "name": "MEBN STACK boilerplate",
+  "description": "Mongodb Express Backbone Node application structure",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
