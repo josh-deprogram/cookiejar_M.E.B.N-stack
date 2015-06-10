@@ -12,8 +12,17 @@ define(function (require) {
     var Item = Backbone.Model.extend({
 
       urlRoot: "/items",
-
       idAttribute: "_id",
+      defaults: {
+          _id: null,
+          name: "",
+          grapes: "",
+          country: "",
+          region: "",
+          year: "",
+          description: "",
+          picture: null
+      },
 
       initialize: function () {
           this.validators = {};
@@ -35,7 +44,6 @@ define(function (require) {
           return (this.validators[key]) ? this.validators[key](this.get(key)) : {isValid: true};
       },
 
-      // TODO: Implement Backbone's standard validate() method instead.
       validateAll: function () {
 
           var messages = {};
@@ -52,16 +60,7 @@ define(function (require) {
           return _.size(messages) > 0 ? {isValid: false, messages: messages} : {isValid: true};
       },
 
-      defaults: {
-          _id: null,
-          name: "",
-          grapes: "",
-          country: "",
-          region: "",
-          year: "",
-          description: "",
-          picture: null
-      }
+
 
     });
 

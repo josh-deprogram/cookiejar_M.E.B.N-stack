@@ -10,7 +10,6 @@ define(function (require) {
         _                  = require('underscore'),
         TweenMax           = require('tweenmax'),
         ItemCollection     = require('app/collections/Collection'),
-        Model              = require('app/models/Models'),
         WineListItemView   = require('app/views/winelistitem');
         // projectTemplate    = require("text!../../../templates/WineList.html");
 
@@ -33,12 +32,10 @@ define(function (require) {
               this.render();
         },
 
-
         render: function () {
 
-
             $(this.el).html('<ul class="thumbnails"></ul>');
-            console.log('page ', scope.page)
+            // console.log('page ', scope.page)
             var p = scope.page ? parseInt(scope.page, 10) : 1;
             var wineList = new ItemCollection();
 

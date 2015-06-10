@@ -14,7 +14,7 @@ define(function (require) {
         _              = require('underscore'),
         OuterView      = require('app/views/outer_ui'),
         HomeView       = require('app/views/home'),
-        WineView       = require('app/views/winedetails'),
+        WineDetail       = require('app/views/winedetails'),
         WineListView   = require('app/views/winelist'),
         Info           = require('app/views/info'),
         AboutView      = require('app/views/info'),
@@ -57,7 +57,7 @@ define(function (require) {
             mainView = new View();
         },
 
-        subView: function(View, page){
+        subView: function(View, page, id){
 
             if(subView){
                 subView.dispose();
@@ -70,8 +70,8 @@ define(function (require) {
                 scope.newView( OuterView ); //Creates the main view if not there already
             }
 
-            // console.log('view is', View);
-            subView = new View(page);
+            console.log('id is', id);
+            subView = new View(page, id);
         },
 
         info: function () {
@@ -98,20 +98,21 @@ define(function (require) {
             //     // $("#viewport").html(new WineListView({model: wineList, page: p}).el);
             // }});
             scope.subView( WineListView, page );
-            // console.log('show list')
         },
 
         wineDetails: function (id) {
-            var wine = new Item({_id: id});
-            wine.fetch({success: function(){
-                $("#viewport").html(new WineView({model: wine}).el);
-            }});
+            // var wine = new Item({_id: id});
+            // wine.fetch({success: function(){
+            //     $("#viewport").html(new WineView({model: wine}).el);
+            // }});
             // this.headerView.selectMenuItem();
+            // console.log('id ',id)
+            scope.subView( WineDetail, null, id );
         },
 
         addWine: function() {
               var wine = new Item();
-              $('#viewport').html(new WineView({model: wine}).el);
+              $('#viewport').html(new WineDetail({model: wine}).el);
               // this.headerView.selectMenuItem('add-menu');
         },
 

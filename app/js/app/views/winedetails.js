@@ -9,14 +9,14 @@ define(function (require) {
         Backbone           = require('backbone'),
         _                  = require('underscore'),
         TweenMax           = require('tweenmax'),
-        projectTemplate    = require("text!../../../templates/WineListItemView.html");
+        Item               = require('app/models/Models'),
+        projectTemplate    = require("text!../../../templates/WineDetail.html");
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;
     var WineView = Backbone.View.extend({
 
         tagName:'div',
-        id:"slides",
         el:'#viewport',  //selects element rendering to
         template: _.template( projectTemplate ),
 
@@ -27,15 +27,29 @@ define(function (require) {
             "drop #picture" : "dropHandler"
         },
 
-        initialize:function (appsocket) {
+        initialize:function (page, id) {
+              console.log('got id ', id);
               scope = this;
+              this.id = id;
               this.render();
         },
 
         render:function () {
 
-            this.$el.html(this.template());
-            return this;
+          var item = new Item({_id: scope.id});
+
+          item.fetch({success: function(){
+              // console.log('got mod ', item)
+              scope.model = item;
+              scope.populateDetails()
+          }});
+
+          return this;
+        },
+
+        populateDetails:function(){
+          // console.log(scope.model)
+          scope.$el.html(scope.template(scope.model.toJSON()));
         },
 
         change: function (event) {
