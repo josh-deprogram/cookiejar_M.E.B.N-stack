@@ -1,0 +1,37 @@
+@import "compass";
+@import "compass/css3";
+@import "compass/reset";
+@import "bootstrap/bootstrap";
+@import "base";
+
+
+// COMPASS Skillz
+//	@include transform(scale(0.4));
+//	@include transition( all .5s );
+
+// :::::::::::::::::::::::::::::::::::
+
+.container{
+    // opacity: 0;
+}
+
+#canvaspad{
+    width:100%;
+    height:100%;
+}
+
+.content{
+	padding-top: 60px;
+}
+
+.white{
+    color: white;
+}
+.yellow{
+    color: $yellow;
+}
+
+.navitem{
+  color: $color2;
+  cursor: pointer;
+}

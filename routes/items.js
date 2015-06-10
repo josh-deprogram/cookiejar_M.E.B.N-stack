@@ -8,26 +8,17 @@ var Server = mongo.Server,
 // var server = new Server('localhost', 27017, {auto_reconnect: true});
 // db = new Db('dbp_beta', server, {safe: true});
 
-// mongodb://admin:admin@ds041432.mongolab.com:41432/dbp_beta
-
-// var server = new Server('mongodb://admin:admin@ds041432.mongolab.com:41432/dbp_beta', 41432, {auto_reconnect: true});
-// db = new Db('dbp_beta', server, {safe: true});
-
-
-// Retrieve
-// var MongoClient = require('mongodb');
-
-// Connect to the db
+// Connect to the Live db
 mongo.connect("mongodb://admin:admin@ds041432.mongolab.com:41432/dbp_beta", function(err, dblive) {
   if(!err) {
     console.log("We are connected");
     db = dblive
     db.collection('items', {safe:true}, function(err, collection) {
-                if (err) {
-                    console.log("The 'items' collection doesn't exist. Creating it with sample data...");
-                    populateDB();
-                }
-            });
+        if (err) {
+            console.log("The 'items' collection doesn't exist. Creating it with sample data...");
+            populateDB();
+        }
+    });
   }
 });
 
