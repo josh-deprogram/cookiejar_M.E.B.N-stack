@@ -49,23 +49,24 @@ define(function (require) {
             // $( "ul.nav > li a" ).removeClass('active');
             // $target.addClass('active');
 
-            if(name === 'home'){
-              scope.home();
-            }else{
-              scope.info();
+            var Router = require('router');
+            var appRouter = new Router();
+
+            switch(name){
+              case 'home':
+                  appRouter.navigate('', { trigger :true });
+              break;
+              case 'browse':
+                  appRouter.navigate('#items', { trigger :true });
+              break;
+              case 'add':
+                  appRouter.navigate('#items/add', { trigger :true });
+              break;
+              case 'info':
+                  appRouter.navigate('info', { trigger :true });
+              break;
             }
-        },
 
-        home:function(){
-            var Router = require('router');
-            var appRouter = new Router();
-            appRouter.navigate('', { trigger :true });
-        },
-
-        info:function(){
-            var Router = require('router');
-            var appRouter = new Router();
-            appRouter.navigate('info', { trigger :true });
         },
 
         // Clean hanging events of the view on change :::::::::::::::::::

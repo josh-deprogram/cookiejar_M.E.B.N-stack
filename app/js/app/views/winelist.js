@@ -46,27 +46,24 @@ define(function (require) {
               console.log('success ', data);
               scope.model = wineList;
               scope.page = p;
-              // $("#viewport").html(new WineListView({model: wineList, page: p}).el);
               scope.populateItemsList()
             }});
 
             // $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
-
-            // this.$el.html(this.template());
 
             return this;
         },
 
         populateItemsList:function(){
 
-          var wines = this.model.models;
+          var items = this.model.models;
           // var len = wines.length;
           // var startPos = (this.options.page - 1) * 8;
           // var endPos = Math.min(startPos + 8, len);
 
-          for (var i = 0; i <  wines.length; i++) {
+          for (var i = 0; i <  items.length; i++) {
             // $('.thumbnails', this.el).append("   LI ITEM ", i);
-            $('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
+            $('.thumbnails', this.el).append(new WineListItemView({model: items[i]}).render().el);
           }
         },
 

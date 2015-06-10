@@ -8,12 +8,11 @@ define(function (require) {
     var $                  = require('jquery'),
         Backbone           = require('backbone'),
         _                  = require('underscore'),
-        TweenMax           = require('tweenmax'),
         projectTemplate    = require("text!../../../templates/WineListItemView.html");
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;
-    var WineList = Backbone.View.extend({
+    var WineListItem = Backbone.View.extend({
 
         tagName:'li',
         // el:'.thumbnails',  //selects element rendering to
@@ -39,6 +38,6 @@ define(function (require) {
 
 
     // Our module now returns our view
-    return WineList;
+    return WineListItem;
 
 });

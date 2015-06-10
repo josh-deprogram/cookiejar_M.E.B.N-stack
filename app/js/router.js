@@ -98,7 +98,7 @@ define(function (require) {
             //     // $("#viewport").html(new WineListView({model: wineList, page: p}).el);
             // }});
             scope.subView( WineListView, page );
-            console.log('show list')
+            // console.log('show list')
         },
 
         wineDetails: function (id) {
