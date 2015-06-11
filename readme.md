@@ -7,5 +7,13 @@ Application built with MongoDB, Express, Backbone.js, Node.js
 
 # Features now include:
     Modular structure
-    Automated compiling with GULP, COMPASS, SCSS
+    Automated compiling with GULP, Compass
     Filtered list
+
+# Useage
+Install the packages, load the server, then simply run Gulp to compile.
+
+    npm install
+    node server.js
+
+    gulp
