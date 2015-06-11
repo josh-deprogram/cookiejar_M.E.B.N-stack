@@ -8,3 +8,4 @@ Application built with MongoDB, Express, Backbone.js, Node.js
 # Features now include:
     Modular structure
     Automated compiling with GULP, COMPASS, SCSS
+    Filtered list
