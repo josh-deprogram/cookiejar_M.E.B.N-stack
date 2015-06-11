@@ -22,6 +22,10 @@ define(function (require) {
         el:'#viewport',
         template: _.template( projectTemplate ),
 
+        events: {
+          'click .filterItem' : 'filterList'
+        },
+
         initialize:function (page) {
               scope = this;
               this.page = page;
@@ -34,11 +38,11 @@ define(function (require) {
 
             // console.log('page ', scope.page)
             var p = scope.page ? parseInt(scope.page, 10) : 1;
-            var wineList = new ItemCollection();
+            var itemList = new ItemCollection();
 
-            wineList.fetch({success: function(data){
+            itemList.fetch({success: function(data){
               // console.log('success ', data);
-              scope.model = wineList;
+              scope.model = itemList;
               scope.page = p;
               scope.populateItemsList()
             }});
@@ -46,15 +50,44 @@ define(function (require) {
             return this;
         },
 
-        populateItemsList:function(){
+        populateItemsList:function(filter){
 
           var items = this.model.models;
-          // var len = wines.length;
-          // var startPos = (this.options.page - 1) * 8;
-          // var endPos = Math.min(startPos + 8, len);
 
           for (var i = 0; i <  items.length; i++) {
-            $('.thumbnails', this.el).append(new ItemsListItemView({model: items[i]}).render().el);
+              $(scope.$el.find('.thumbnails'), this.el).append(new ItemsListItemView({model: items[i]}).render().el);
+          }
+
+        },
+
+        filterList:function(ev){
+          var name = $(ev.target).data('name');
+          var items = this.model.models;
+
+          // Empty the current list.
+          $(scope.$el.find('.thumbnails')).empty();
+
+          switch (name){
+            case 'all':
+              scope.populateItemsList();
+            break;
+
+            case 'year':
+              for (var i = 0; i <  items.length; i++) {
+                if(items[i].attributes.year === '2010'){
+                  $(scope.$el.find('.thumbnails'), this.el).append(new ItemsListItemView({model: items[i]}).render().el);
+                }
+              }
+            break;
+
+            case 'country':
+              for (var i = 0; i <  items.length; i++) {
+                if(items[i].attributes.country === 'USA'){
+                  $(scope.$el.find('.thumbnails'), this.el).append(new ItemsListItemView({model: items[i]}).render().el);
+                }
+              }
+            break;
+
           }
         },
 
