@@ -10,11 +10,12 @@ define(function (require) {
         _                  = require('underscore'),
         TweenMax           = require('tweenmax'),
         Item               = require('app/models/Models'),
+        Utils              = require('app/utils/utils'),
         projectTemplate    = require("text!../../../templates/WineDetail.html");
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;
-    var WineView = Backbone.View.extend({
+    var ItemView = Backbone.View.extend({
 
         tagName:'div',
         el:'#viewport',  //selects element rendering to
@@ -31,6 +32,7 @@ define(function (require) {
               console.log('got id ', id);
               scope = this;
               this.id = id;
+              this.utils = new Utils();
               this.render();
         },
 
@@ -54,7 +56,7 @@ define(function (require) {
 
         change: function (event) {
             // Remove any existing alert message
-            utils.hideAlert();
+            scope.utils.hideAlert();
 
             // Apply the change to the model
             var target = event.target;
@@ -65,9 +67,9 @@ define(function (require) {
             // Run validation rule (if any) on changed item
             var check = this.model.validateItem(target.id);
             if (check.isValid === false) {
-                utils.addValidationError(target.id, check.message);
+              scope.utils.addValidationError(target.id, check.message);
             } else {
-                utils.removeValidationError(target.id);
+              scope.utils.removeValidationError(target.id);
             }
         },
 
@@ -75,7 +77,7 @@ define(function (require) {
             var self = this;
             var check = this.model.validateAll();
             if (check.isValid === false) {
-                utils.displayValidationErrors(check.messages);
+                scope.utils.displayValidationErrors(check.messages);
                 return false;
             }
             this.saveWine();
@@ -88,11 +90,13 @@ define(function (require) {
             this.model.save(null, {
                 success: function (model) {
                     self.render();
-                    app.navigate('wines/' + model.id, false);
-                    utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
+                    var Router = require('router');
+                    var appRouter = new Router();
+                    appRouter.navigate('wines/' + model.id, false);
+                    scope.utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
                 },
                 error: function () {
-                    utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
+                    scope.utils.showAlert('Error', 'An error occurred while trying to delete this item', 'alert-error');
                 }
             });
         },
@@ -131,6 +135,6 @@ define(function (require) {
     });
 
 
-    return WineView;
+    return ItemView;
 
 });

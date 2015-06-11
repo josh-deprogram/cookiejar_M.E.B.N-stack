@@ -21,11 +21,6 @@ define(function (require) {
         el:'#viewport',  //selects element rendering to
         // template: _.template( projectTemplate ),
 
-        events: {
-             // 'click #btn1': 'answer',
-        },
-
-
         initialize:function (page) {
               scope = this;
               this.page = page;
@@ -40,13 +35,11 @@ define(function (require) {
             var wineList = new ItemCollection();
 
             wineList.fetch({success: function(data){
-              console.log('success ', data);
+              // console.log('success ', data);
               scope.model = wineList;
               scope.page = p;
               scope.populateItemsList()
             }});
-
-            // $(this.el).append(new Paginator({model: this.model, page: this.options.page}).render().el);
 
             return this;
         },
@@ -59,7 +52,6 @@ define(function (require) {
           // var endPos = Math.min(startPos + 8, len);
 
           for (var i = 0; i <  items.length; i++) {
-            // $('.thumbnails', this.el).append("   LI ITEM ", i);
             $('.thumbnails', this.el).append(new WineListItemView({model: items[i]}).render().el);
           }
         },

@@ -40,7 +40,7 @@ define(function (require) {
             "items/page/:page"	: "list",
             "items/add"         : "addWine",
             "items/:id"         : "wineDetails",
-            "about"             : "about"
+            "about"             : "info"
         },
 
         initialize: function(){
@@ -70,7 +70,7 @@ define(function (require) {
                 scope.newView( OuterView ); //Creates the main view if not there already
             }
 
-            console.log('id is', id);
+            // console.log('id is', id);
             subView = new View(page, id);
         },
 
@@ -84,45 +84,20 @@ define(function (require) {
             if (!homeView) {
                 scope.subView( HomeView );
             }
-            // $('#content').html(this.homeView.el);
-            // this.headerView.selectMenuItem('home-menu');
         },
 
         list: function(page) {
-            // var p = page ? parseInt(page, 10) : 1;
-            // var wineList = new ItemCollection();
-            // wineList.fetch({success: function(data){
-            //   console.log('success ', data);
-            //   var view = WineListView;
-            //   // scope.subView( view );
-            //     // $("#viewport").html(new WineListView({model: wineList, page: p}).el);
-            // }});
             scope.subView( WineListView, page );
         },
 
         wineDetails: function (id) {
-            // var wine = new Item({_id: id});
-            // wine.fetch({success: function(){
-            //     $("#viewport").html(new WineView({model: wine}).el);
-            // }});
-            // this.headerView.selectMenuItem();
-            // console.log('id ',id)
             scope.subView( WineDetail, null, id );
         },
 
         addWine: function() {
-              var wine = new Item();
-              $('#viewport').html(new WineDetail({model: wine}).el);
-              // this.headerView.selectMenuItem('add-menu');
+            var wine = new Item();
+            $('#viewport').html(new WineDetail({model: wine}).el);
         },
-
-        about: function () {
-            if (!this.aboutView) {
-                this.aboutView = new AboutView();
-            }
-            $('#viewport').html(this.aboutView.el);
-            // this.headerView.selectMenuItem('about-menu');
-        }
 
 
     });
