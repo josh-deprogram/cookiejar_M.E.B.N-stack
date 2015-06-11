@@ -1,7 +1,7 @@
-SOMETHING@!!
-<!-- <div class="row-fluid">
 
-    <form class="form-horizontal span12">
+<div class="row-fluid details">
+
+  <form class="form-horizontal span12">
 
         <fieldset>
 
@@ -9,7 +9,8 @@ SOMETHING@!!
             <br/>
 
             <div class="row">
-                <div class="span8">
+              <div class="">
+                <div class="col-lg-6 col-md-6 col-sm-6">
 
                     <div class="control-group">
                         <label for="wineId" class="control-label">Id:</label>
@@ -29,17 +30,9 @@ SOMETHING@!!
                         </div>
                     </div>
 
-                    <div class="control-group">
-                        <label for="grapes" class="control-label">Grapes:</label>
-
-                        <div class="controls">
-                            <input type="text" id="grapes" name="grapes" value="<%= grapes %>"/>
-                            <span class="help-inline"></span>
-                        </div>
-                    </div>
 
                     <div class="control-group">
-                        <label for="country" class="control-label">Country:</label>
+                        <label for="country" class="control-label">Flavour:</label>
 
                         <div class="controls">
                             <input type="text" id="country" name="country" value="<%= country %>"/>
@@ -80,20 +73,19 @@ SOMETHING@!!
                         <label for="description" class="control-label">Notes:</label>
 
                         <div class="controls">
-                            <textarea id="description" name="description" style="width: 90%;" rows="6"><%= description
-                                %></textarea>
+                            <textarea id="description" name="description" style="width: 90%;" rows="6"><%= description %></textarea>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="span4">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="well" style="width: 180px;text-align: center;width:50%;margin: 0px auto;">
-                        <p><img id="picture" width="180" src="<%= picture === null ? 'pics/cookies/generic.jpg' : 'pics/' + picture %>"/></p>
+                        <p><img id="picture" width="180" src="<%= picture === null ? 'imgs/cookies/generic.jpg' : 'imgs/' + picture %>"/></p>
 
                     </div>
                 </div>
-
+              </div>
             </div>
 
         </fieldset>
@@ -107,10 +99,11 @@ SOMETHING@!!
 
 </div>
 
+
 <div class="row-fluid status-bar">
     <div class="span12">
         <div class="alert alert-success" style="display: none">
             <b>Success!</b> Cookie saved successfully
         </div>
     </div>
-</div> -->
+</div>

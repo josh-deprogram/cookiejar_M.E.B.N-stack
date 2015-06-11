@@ -11,7 +11,7 @@ define(function (require) {
         TweenMax           = require('tweenmax'),
         Item               = require('app/models/Models'),
         Utils              = require('app/utils/utils'),
-        projectTemplate    = require("text!../../../templates/WineDetail.html");
+        projectTemplate    = require("text!../../../templates/ItemDetail.html");
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;
@@ -92,7 +92,7 @@ define(function (require) {
                     self.render();
                     var Router = require('router');
                     var appRouter = new Router();
-                    appRouter.navigate('wines/' + model.id, false);
+                    appRouter.navigate('items/' + model.id, false);
                     scope.utils.showAlert('Success!', 'Wine saved successfully', 'alert-success');
                 },
                 error: function () {

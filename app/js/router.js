@@ -14,8 +14,8 @@ define(function (require) {
         _              = require('underscore'),
         OuterView      = require('app/views/outer_ui'),
         HomeView       = require('app/views/home'),
-        WineDetail       = require('app/views/winedetails'),
-        WineListView   = require('app/views/winelist'),
+        ItemDetail     = require('app/views/itemDetails'),
+        ItemListView   = require('app/views/itemsList'),
         Info           = require('app/views/info'),
         AboutView      = require('app/views/info'),
         Item           = require('app/models/Models'),
@@ -87,16 +87,17 @@ define(function (require) {
         },
 
         list: function(page) {
-            scope.subView( WineListView, page );
+            scope.subView( ItemListView, page );
         },
 
         wineDetails: function (id) {
-            scope.subView( WineDetail, null, id );
+            scope.subView( ItemDetail, null, id );
         },
 
         addWine: function() {
-            var wine = new Item();
-            $('#viewport').html(new WineDetail({model: wine}).el);
+            // Create new blank model.
+            var item = new Item();
+            $('#viewport').html(new ItemDetail({model: item}).el);
         },
 
 

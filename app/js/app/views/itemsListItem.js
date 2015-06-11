@@ -8,7 +8,7 @@ define(function (require) {
     var $                  = require('jquery'),
         Backbone           = require('backbone'),
         _                  = require('underscore'),
-        projectTemplate    = require("text!../../../templates/WineListItemView.html");
+        projectTemplate    = require("text!../../../templates/ItemsListItemView.html");
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;

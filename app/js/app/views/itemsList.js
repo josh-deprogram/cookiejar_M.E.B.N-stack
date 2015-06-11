@@ -10,16 +10,14 @@ define(function (require) {
         _                  = require('underscore'),
         TweenMax           = require('tweenmax'),
         ItemCollection     = require('app/collections/Collection'),
-        WineListItemView   = require('app/views/winelistitem');
-        // projectTemplate    = require("text!../../../templates/WineList.html");
+        WineListItemView   = require('app/views/itemsListItem');
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;
     var WineList = Backbone.View.extend({
 
         tagName:'div',
-        el:'#viewport',  //selects element rendering to
-        // template: _.template( projectTemplate ),
+        el:'#viewport',
 
         initialize:function (page) {
               scope = this;

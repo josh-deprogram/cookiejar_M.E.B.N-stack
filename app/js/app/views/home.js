@@ -36,9 +36,9 @@ define(function (require) {
         render:function () {
 
             this.$el.html(this.template());
-            // console.log('rendering.... ', this.template())
+
             //fade in.
-            // TweenMax.to(scope.$el.find('.container'), 0.5, {alpha:1});
+            TweenMax.to(scope.$el.find('.container'), 0.5, {alpha:1});
 
             return this;
         },

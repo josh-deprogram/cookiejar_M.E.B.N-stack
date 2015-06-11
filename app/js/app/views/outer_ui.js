@@ -45,10 +45,6 @@ define(function (require) {
 
         navClick:function(ev){
             var name = $(ev.target).data('name');
-            // var $target = $(ev.target);
-            // $( "ul.nav > li a" ).removeClass('active');
-            // $target.addClass('active');
-
             var Router = require('router');
             var appRouter = new Router();
 
