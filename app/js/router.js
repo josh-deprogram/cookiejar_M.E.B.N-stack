@@ -21,7 +21,6 @@ define(function (require) {
         Item           = require('app/models/Models'),
         ItemCollection = require('app/collections/Collection');
 
-
     var scope,
         mainView = null,
         subView = null,
@@ -38,8 +37,8 @@ define(function (require) {
             'info' : 'info',
             "items"	: "list",
             "items/page/:page"	: "list",
-            "items/add"         : "addWine",
-            "items/:id"         : "wineDetails",
+            "items/add"         : "addItem",
+            "items/:id"         : "itemDetails",
             "about"             : "info"
         },
 
@@ -57,7 +56,7 @@ define(function (require) {
             mainView = new View();
         },
 
-        subView: function(View, page, id){
+        subView: function(View, page, id, model){
 
             if(subView){
                 subView.dispose();
@@ -71,7 +70,7 @@ define(function (require) {
             }
 
             // console.log('id is', id);
-            subView = new View(page, id);
+            subView = new View(page, id, model);
         },
 
         info: function () {
@@ -90,14 +89,14 @@ define(function (require) {
             scope.subView( ItemListView, page );
         },
 
-        wineDetails: function (id) {
+        itemDetails: function (id) {
             scope.subView( ItemDetail, null, id );
         },
 
-        addWine: function() {
+        addItem: function() {
             // Create new blank model.
             var item = new Item();
-            $('#viewport').html(new ItemDetail({model: item}).el);
+            scope.subView( ItemDetail, null, null, item );
         },
 
 

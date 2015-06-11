@@ -24,27 +24,35 @@ define(function (require) {
         events: {
             "change"        : "change",
             "click .save"   : "beforeSave",
-            "click .delete" : "deleteWine",
+            "click .delete" : "deleteItem",
             "drop #picture" : "dropHandler"
         },
 
-        initialize:function (page, id) {
+        initialize:function (page, id, model) {
               console.log('got id ', id);
               scope = this;
+              this.model = model;
               this.id = id;
               this.utils = new Utils();
               this.render();
+              console.log('model is ', scope.model)
         },
 
         render:function () {
 
-          var item = new Item({_id: scope.id});
+          if(!scope.model){
+            var item = new Item({_id: scope.id});
 
-          item.fetch({success: function(){
-              // console.log('got mod ', item)
-              scope.model = item;
-              scope.populateDetails()
-          }});
+            item.fetch({success: function(){
+                console.log('got mod ', item)
+                scope.model = item;
+                scope.populateDetails()
+            }});
+          }else{
+            scope.populateDetails()
+          }
+
+
 
           return this;
         },
@@ -52,6 +60,9 @@ define(function (require) {
         populateDetails:function(){
           // console.log(scope.model)
           scope.$el.html(scope.template(scope.model.toJSON()));
+
+          //fade in.
+          TweenMax.to(scope.$el.find('.container'), 0.5, {alpha:1});
         },
 
         change: function (event) {
@@ -80,11 +91,11 @@ define(function (require) {
                 scope.utils.displayValidationErrors(check.messages);
                 return false;
             }
-            this.saveWine();
+            this.saveItem();
             return false;
         },
 
-        saveWine: function () {
+        saveItem: function () {
             var self = this;
             console.log('before save');
             this.model.save(null, {
@@ -101,7 +112,7 @@ define(function (require) {
             });
         },
 
-        deleteWine: function () {
+        deleteItem: function () {
             this.model.destroy({
                 success: function () {
                     alert('Wine deleted successfully');
@@ -129,7 +140,6 @@ define(function (require) {
         // Clean hanging events of the view on change :::::::::::::::::::
         dispose:function(){
             // console.log('cleaned');
-            // TweenMax.set(scope.$el.find('.container'), {alpha:0});
         }
 
     });

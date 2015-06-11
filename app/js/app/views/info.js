@@ -43,7 +43,6 @@ define(function (require) {
         // Clean hanging events of the view on change :::::::::::::::::::
         dispose:function(){
             // console.log('cleaned');
-            // TweenMax.set(scope.$el.find('.container'), {alpha:0});
         }
 
     });

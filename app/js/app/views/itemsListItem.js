@@ -15,7 +15,6 @@ define(function (require) {
     var WineListItem = Backbone.View.extend({
 
         tagName:'li',
-        // el:'.thumbnails',  //selects element rendering to
         template: _.template( projectTemplate ),
 
         initialize: function () {
@@ -24,6 +23,7 @@ define(function (require) {
         },
 
         render: function () {
+            var scope = this;
             $(this.el).html(this.template(this.model.toJSON()));
             return this;
         },

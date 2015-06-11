@@ -16,7 +16,6 @@ define(function (require) {
       defaults: {
           _id: null,
           name: "",
-          grapes: "",
           country: "",
           region: "",
           year: "",
@@ -29,10 +28,6 @@ define(function (require) {
 
           this.validators.name = function (value) {
               return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a name"};
-          };
-
-          this.validators.grapes = function (value) {
-              return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a grape variety"};
           };
 
           this.validators.country = function (value) {

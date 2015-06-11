@@ -1,7 +1,7 @@
 var express = require('express'),
     path = require('path'),
     http = require('http'),
-    item = require('./routes/items');
+    item = require('./routes/itemsAPI');
 
 var app = express();
 var server = http.createServer(app);
