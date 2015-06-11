@@ -1,4 +1,4 @@
-// THE INTRO VIEW ::::::::::::::::::::::::
+// 
 
 define(function (require) {
 

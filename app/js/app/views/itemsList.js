@@ -10,7 +10,9 @@ define(function (require) {
         _                  = require('underscore'),
         TweenMax           = require('tweenmax'),
         ItemCollection     = require('app/collections/Collection'),
-        WineListItemView   = require('app/views/itemsListItem');
+        ItemsListItemView   = require('app/views/itemsListItem'),
+        projectTemplate    = require("text!../../../templates/ItemsList.html");
+
 
     // CONTENT :::::::::::::::::::::::::::::::::::
     var scope;
@@ -18,6 +20,7 @@ define(function (require) {
 
         tagName:'div',
         el:'#viewport',
+        template: _.template( projectTemplate ),
 
         initialize:function (page) {
               scope = this;
@@ -27,7 +30,8 @@ define(function (require) {
 
         render: function () {
 
-            $(this.el).html('<ul class="thumbnails"></ul>');
+            $(this.el).html(scope.template());
+
             // console.log('page ', scope.page)
             var p = scope.page ? parseInt(scope.page, 10) : 1;
             var wineList = new ItemCollection();
@@ -50,7 +54,7 @@ define(function (require) {
           // var endPos = Math.min(startPos + 8, len);
 
           for (var i = 0; i <  items.length; i++) {
-            $('.thumbnails', this.el).append(new WineListItemView({model: items[i]}).render().el);
+            $('.thumbnails', this.el).append(new ItemsListItemView({model: items[i]}).render().el);
           }
         },
 

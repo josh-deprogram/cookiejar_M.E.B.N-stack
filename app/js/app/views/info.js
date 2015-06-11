@@ -1,4 +1,4 @@
-// THE INTRO VIEW ::::::::::::::::::::::::
+// Information view
 
 define(function (require) {
 

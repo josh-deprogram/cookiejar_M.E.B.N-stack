@@ -1,4 +1,4 @@
-// THE INTRO VIEW ::::::::::::::::::::::::
+// Item Detail
 
 define(function (require) {
 
@@ -29,13 +29,13 @@ define(function (require) {
         },
 
         initialize:function (page, id, model) {
-              console.log('got id ', id);
+              // console.log('got id ', id);
               scope = this;
               this.model = model;
               this.id = id;
               this.utils = new Utils();
               this.render();
-              console.log('model is ', scope.model)
+              // console.log('model is ', scope.model)
         },
 
         render:function () {
@@ -44,7 +44,7 @@ define(function (require) {
             var item = new Item({_id: scope.id});
 
             item.fetch({success: function(){
-                console.log('got mod ', item)
+                // console.log('got mod ', item)
                 scope.model = item;
                 scope.populateDetails()
             }});
@@ -115,7 +115,7 @@ define(function (require) {
         deleteItem: function () {
             this.model.destroy({
                 success: function () {
-                    alert('Wine deleted successfully');
+                    alert('ITEM deleted successfully');
                     window.history.back();
                 }
             });

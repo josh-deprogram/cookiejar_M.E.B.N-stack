@@ -1,4 +1,4 @@
-// THE INTRO VIEW ::::::::::::::::::::::::
+// The outer UI container view.
 
 define(function (require) {
 
